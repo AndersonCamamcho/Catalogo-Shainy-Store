@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "shainy-store-db",
+  "private_key_id": "815beb8772787e406ddbd8fbb28f35132952a767",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDYYZ9MUnPwFt5+\nQx5o6QF3dlx4uZ3sGrm0Ag/4uwUbqA13pOAI+w9PkSlrw4zDXjz6o4guOilTEdh+\nvtBTie+1a/cN/FQO3WuIaLXxVFb0g5pbu6Rij4g5qLtx7JIEB6hzGaBRaAIaeb2v\ncbHzYwfSXTBdJmypWEiNjzuNgt32yD1+NqjnrYlROjRZKjOagv7IP78X0rIvCn4X\nm/K5RhzmBzo65iacy/mmNecO87rhg1mTWwjf9ke6a/aJl0ACW91FQQ93EU6Yb9x7\npF3Ji/UoBlpFsfJFWSxMs5t63i6+em+iwoEIK2/JK0DqzkeUc88nY8SCTlymZvM+\n2v7r9JJLAgMBAAECggEAFW5d07Za602ojcLiESv6zDU55W8k+AyRlgWaRV1onRug\n8devpNQQ6SWMf7LnjzYXPg/SXhm+nA6pbaxCf/OqfUKLPqReQvalPuZ4FsXustsR\n/8Hu/yAOMv/GSPtQXvvPME86dLWjd7HVGrpdEKkfTjOSpbc3jfJDhVnJYTOz/kwa\nGjRMCsp8KlcT+DVlzkYGCs83d6fKqvf6jEoM3XSsSBcQ9PnHwN6310AuERo1MJnk\nx/dxBAqbocuCSMSGPwKoVL0DJ5FCSbKe3JYni+Iv8Ue6siIZem+hlhy1ZjnPAJPB\nBqUJamtWHEPWXTYxsManIuLA4fMdtfs9fHOBvqJ0iQKBgQD/2o9+qi/Yvfi7tzik\nCLZ7DHWZGw1fyy3XnnF8re1/8aEU/Hhl/PyGClwsF+Ntc9bqIB7eL1tej4F1FvI3\nEJubBZzs1Ul21xeGF3e0NmU33if9FmDUX2mcq4HCcW8vnU3Yf4E33I99ZIGopKKa\n4S3ksVBENO0NBss5DLi16P49dQKBgQDYgUkh1g9/jyT74AGmxdNxhOtifgC+dofV\n6Hqspc7w7h1MpFmcE/C11BcLubmQZ1wpVSxuY1GvX4/U7gSilBYu8nwHofYmcC7J\nMNLu1B5ET10VSuSYaivSw+3Vm7SZC7B9pO3ATFp/DJjE1qdmOTwPPJ4ZiQ09cCoz\n6t4WSYLYvwKBgEahY3OoL8U5zGyly/EcpqOZcO1vVmXXhTQ8/T9aFHJ5lephOCuP\nh3bJbWCOx63ziKThcSQNFsAoBaj5SKyC3TISfpuy1bEE9+2AlP8e9RpTLd7kSp7W\nKCWkAxJWlkciudbGfDmbndET6edQa8Mt3ql/eZUat0YdVgTNykANrgHxAoGAC7bj\nGBuW9xXtsFsse7OUfz3r5oZez+9l5iMQECtgiRS5LR5vYsyJZ600GgRQkAmnqOzc\n3JQvJUgMZj8CrTFKCfxAzcDrqqTDQ0uK/jUn9hY9ORu2RrDn8h17zuT/3pANWp8D\n5jW7Z8hss6nRoOxT3ZcwDr2lo79f6TM6FQahN80CgYAuuEqQqUVUYMqVjwnHt367\nc+iY7ZOpRf3W3fjpmLFKQ9Y77nrOduXpQSSHEfcIm2uADXmTXkNlKjQAb6IgnvyW\nssGip5LJg5dqRtSc/CFHaY3qvkYA1lpg4pAVk61SFyjkNU5vCCELY9OAZqQxM7p7\n5vbsBpOirkLDrYQB1crN3g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "shainy-db-anderson@shainy-store-db.iam.gserviceaccount.com",
+  "client_id": "111120545125950355003",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/shainy-db-anderson%40shainy-store-db.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
