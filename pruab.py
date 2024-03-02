@@ -7,7 +7,7 @@ import pandas as pd
 from rembg import remove
 import re
 from oauth2client.service_account import ServiceAccountCredentials
-from app    import  cambiar_orden_paginas
+from app import cambiar_orden_paginas
 
 locale.setlocale(locale.LC_ALL, 'es_CO.UTF-8')
 scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
@@ -52,12 +52,12 @@ class crearPdf(FPDF):
         pdf.set_xy(105, 130)
         pdf.set_font('MilkyNice-Clean', size=75)
         pdf.set_text_color(249, 232, 232)
-        pdf.cell(10, 10, txt=categoria, ln=1, align='C')
+        pdf.cell(10, 10, text=categoria, ln=1, align='C')
         pdf.set_text_color(96, 96, 96)
         pdf.set_font('MilkyNice-Clean', size=14)
         pdf.set_xy(175, 320)
         n_pagi += 1
-        pdf.cell(60, 5, txt=f'pag.{n_pagi}', align='C')
+        pdf.cell(60, 5, text=f'pag.{n_pagi}', align='C')
 
         productos_categoria = df[df['categoria'] == categoria]
         indice[categoria] = n_pagi
@@ -80,18 +80,18 @@ class crearPdf(FPDF):
                 pdf.set_font('MilkyNice-Clean', size=16)
                 pdf.set_text_color(96, 96, 96)
                 pdf.set_xy(20, 20)
-                pdf.multi_cell(180, 8, txt=producto, align='L')
+                pdf.multi_cell(180, 8, text=producto, align='L')
                 pdf.set_xy(40, 90)
-                pdf.cell(50, 10, txt=f"${precio_formateado}", ln=1, align='C')
+                pdf.cell(50, 10, text=f"${precio_formateado}", ln=1, align='C')
                 pdf.set_font('MilkyNice-Clean', size=14)
                 pdf.set_xy(100, 50)
-                pdf.multi_cell(60, 5, txt=descripcion, align='C')
+                pdf.multi_cell(60, 5, text=descripcion, align='C')
                 pdf.set_draw_color(255, 153, 153)
                 pdf.set_line_width(0.5)
                 # pdf.line(18.6, 110, 200, 110)
                 pdf.set_xy(175, 320)
                 n_pagi += 1
-                pdf.cell(60, 5, txt=f'pag.{n_pagi}', align='C')
+                pdf.cell(60, 5, text=f'pag.{n_pagi}', align='C')
 
 
 
@@ -99,25 +99,25 @@ class crearPdf(FPDF):
                 pdf.image(imagen_procesada, x=120, y=138, w=60, h=60)
                 pdf.set_font('MilkyNice-Clean', size=16)
                 pdf.set_xy(18, 120)
-                pdf.multi_cell(180, 8, txt=producto, align='L')
+                pdf.multi_cell(180, 8, text=producto, align='L')
                 pdf.set_xy(127, 200)
-                pdf.cell(50, 10, txt=f"${precio_formateado}", ln=1, align='C')
+                pdf.cell(50, 10, text=f"${precio_formateado}", ln=1, align='C')
                 pdf.set_font('MilkyNice-Clean', size=14)
                 pdf.set_xy(30, 170)
-                pdf.multi_cell(60, 5, txt=descripcion, align='C')
+                pdf.multi_cell(60, 5, text=descripcion, align='C')
                 # pdf.line(18.6, 220, 200, 220)
 
             elif contador == 3:
                 pdf.image(imagen_procesada, x=35, y=255, w=60, h=60)
                 pdf.set_font('MilkyNice-Clean', size=16)
                 pdf.set_xy(18, 225)
-                pdf.multi_cell(180, 8, txt=producto, align='L')
+                pdf.multi_cell(180, 8, text=producto, align='L')
                 pdf.set_font('MilkyNice-Clean', size=14)
                 pdf.set_xy(100, 280)
-                pdf.multi_cell(60, 5, txt=descripcion, align='C')
+                pdf.multi_cell(60, 5, text=descripcion, align='C')
                 pdf.set_font('MilkyNice-Clean', size=16)
                 pdf.set_xy(40, -15)
-                pdf.cell(50, 10, txt=f"${precio_formateado}", ln=1, align='C')
+                pdf.cell(50, 10, text=f"${precio_formateado}", ln=1, align='C')
 
             contador += 1
             if contador > 3:
@@ -128,24 +128,26 @@ class crearPdf(FPDF):
     pdf.set_font('MilkyNice-Clean', size=50)
     pdf.set_text_color(255, 255, 255)
     pdf.set_xy(0, 40)
-    pdf.cell(216, 10, txt='SHAINY STORE', ln=1, align='C')
+    pdf.cell(216, 10, text='SHAINY STORE', ln=1, align='C')
     pdf.set_xy(50, 185)
     pdf.set_font('MilkyNice-Clean', size=18)
-    pdf.cell(0, 10, txt='Distribuidores de TRENDY, ELAYA & ANI-K', ln=1, align='L')
+    pdf.cell(0, 10, text='Distribuidores de TRENDY, ELAYA & ANI-K', ln=1, align='L')
     pdf.set_xy(50, 201)
-    pdf.cell(0, 10, txt='instagram.com/shainy.store/', ln=1, link='https://www.instagram.com/shainy.store/', align='L')
+    pdf.cell(0, 10, text='instagram.com/shainy.store/', ln=1, link='https://www.instagram.com/shainy.store/', align='L')
     pdf.set_xy(50, 219)
-    pdf.cell(0, 10, txt='300 9069301 ', link='wa.link/i9elhd', ln=1, align='L')
+    pdf.cell(0, 10, text='300 9069301 ', link='wa.link/i9elhd', ln=1, align='L')
 
 
     #if productos_iterados:
     for categoria, num_pagina in indice.items():
         pdf.set_font('MilkyNice-Clean', size=18)
+        link = pdf.add_link(page=num_pagina)
+
         pdf.set_xy(50, ejey)
-        pdf.cell(0, 5, txt=f'{categoria}', ln=1, align='L')
+        pdf.cell(0, 5, text=f'{categoria}', ln=1, align='L', link=link)
         pdf.set_xy(0, ejey)
-        pdf.cell(160, 5, txt=f'...................  {num_pagina}', ln=1, align='R')
+        pdf.cell(180, 5, text=f'.............................pag. {num_pagina}', ln=1, align='R')
         ejey += 20
     pdf.output('output.pdf')
-    cambiar_orden_paginas('output.pdf', 'catalogo shainy.pdf', 0)
+    #cambiar_orden_paginas('output.pdf', 'catalogo shainy.pdf', 0)
 
