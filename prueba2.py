@@ -8,6 +8,16 @@ from rembg import remove
 import re
 from oauth2client.service_account import ServiceAccountCredentials
 from app import cambiar_orden_paginas
+from descargarImagenes import descargar_imagen
+
+urls_imagenes = [
+    'https://www.canva.com/design/DAF6WeNQNQg/Mulc3tZpdR5ulTRt41H8Sw/watch',
+    'https://www.canva.com/design/DAF6WeNQNQg/Mulc3tZpdR5ulTRt41H8Sw/watch',
+    'https://www.canva.com/design/DAF6WeNQNQg/Mulc3tZpdR5ulTRt41H8Sw/watch'
+]
+nombres_archivos = ['categoria.jpg', 'portada.jpg', 'cuerpo.jpg']
+for url, nombre_archivo in zip(urls_imagenes, nombres_archivos):
+    descargar_imagen(url, nombre_archivo)
 
 locale.setlocale(locale.LC_ALL, 'es_CO.UTF-8')
 scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
@@ -26,25 +36,26 @@ ejey = 80
 
 
 class crearPdf(FPDF):
-    #@staticmethod
-    def quitar_fondo(imagen_url):
-        imagen = Image.open(requests.get(imagen_url, stream=True).raw)
-        sin_fondo = remove(imagen)
-        imagen_url_limpio = re.sub(r'[\/:*?"<>|]', '_', imagen_url)
-        nombre_archivo = f"{imagen_url_limpio}.png"
-        sin_fondo.save(nombre_archivo)
-        return nombre_archivo
-
-
+    # @staticmethod
+    def quitar_fondo(imagen_url, QuitarFondo):
+        if QuitarFondo == 1:
+            imagen = Image.open(requests.get(imagen_url, stream=True).raw)
+            sin_fondo = remove(imagen)
+            imagen_url_limpio = re.sub(r'[\/:*?"<>|]', '_', imagen_url)
+            nombre_archivo = f"{imagen_url_limpio}.png"
+            sin_fondo.save(nombre_archivo)
+            return nombre_archivo
+        else:
+            imagen = Image.open(requests.get(imagen_url, stream=True).raw)
+            imagen_url_limpio = re.sub(r'[\/:*?"<>|]', '_', imagen_url)
+            nombre_archivo = f"{imagen_url_limpio}.png"
+            imagen.save(nombre_archivo)
+            return nombre_archivo
 
     # Portada/indice
     pdf = FPDF(orientation='P', unit='mm', format=(216, 330))
     pdf.set_auto_page_break(auto=True, margin=5)
     pdf.add_font(family='MilkyNice-Clean', fname='C:/Users/ander/Proyectos/Catalogo Shainy/fuentes/MilkyNice-Clean.ttf')
-
-
-
-
 
     categorias = df['categoria'].unique()
 
@@ -54,7 +65,7 @@ class crearPdf(FPDF):
         pdf.set_xy(105, 130)
         pdf.set_font('MilkyNice-Clean', size=75)
         pdf.set_text_color(249, 232, 232)
-        pdf.cell(10, 10, text=categoria,  align='C')
+        pdf.cell(10, 10, text=categoria, align='C')
         pdf.set_text_color(96, 96, 96)
         pdf.set_font('MilkyNice-Clean', size=14)
         pdf.set_xy(175, 320)
@@ -72,7 +83,9 @@ class crearPdf(FPDF):
             precio_formateado = locale.format_string('%d', precio, grouping=True)
             descripcion = row['descripcion']
             imagen_exc = row['img']
-            imagen_procesada = quitar_fondo(imagen_exc)  # Llamada correcta
+            val_fondo = row['QuitarFondo']
+
+            imagen_procesada = quitar_fondo(imagen_exc, val_fondo)
 
             if contador == 1:
                 pdf.add_page()
@@ -144,8 +157,6 @@ class crearPdf(FPDF):
         pdf.cell(160, 5, text=f'............................. pag. {num_pagina}', align='R', link=link)
         ejey += 20
 
-
     pdf.output('output.pdf')
-    #ruta_archivo_original = 'output.pdf'
+
     cambiar_orden_paginas('output.pdf', 'catalogo shainy v1.pdf')
-    
